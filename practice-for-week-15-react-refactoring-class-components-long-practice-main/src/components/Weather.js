@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { toQueryString } from "../utils";
 
-function Weather(location) {
+// componentDidMount() {
+//       navigator.geolocation?.getCurrentPosition(
+//         this.pollWeather,
+  //       (err) => console.log(err),
+  //       { timeout: 10000 }
+  //     );
+  //   }
+function Weather() {
   const [weather, setWeather] = useState({});
-
   useEffect(() => {
     console.log("component has mounted");
     let url = "http://api.openweathermap.org/data/2.5/weather?";
-    const pollWeather = async () => {
+    const pollWeather = async (location) => {
       console.log("firing off async request");
       const apiKey = process.env.REACT_APP_WEATHER_API;
       debugger;
       const params = {
         lat: location.coords.latitude,
-
         lon: location.coords.longitude,
+        // lat: 40.730610, 
+        // lon: -73.935242,
         appid: apiKey,
       };
       console.log(params);
